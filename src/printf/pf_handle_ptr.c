@@ -6,7 +6,7 @@
 /*   By: emandret <emandret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 23:29:31 by emandret          #+#    #+#             */
-/*   Updated: 2017/04/20 01:08:08 by emandret         ###   ########.fr       */
+/*   Updated: 2017/04/21 19:42:39 by emandret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,5 @@ void	pf_handle_ptr(t_buffer *buffer, t_format *format, va_list ap)
 	pf_buffer_putstr(buffer, s);
 	if (format->flags.space_right)
 		pf_buffer_putnchar(buffer, ' ', format->min_field);
+	ft_memdel((void**)&s);
 }

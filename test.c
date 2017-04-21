@@ -6,7 +6,7 @@
 /*   By: emandret <emandret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/20 19:24:12 by emandret          #+#    #+#             */
-/*   Updated: 2017/04/20 19:42:05 by emandret         ###   ########.fr       */
+/*   Updated: 2017/04/23 13:49:35 by emandret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,10 @@ int				main(void)
 	int	ret, ex_ret;
 
 	setlocale(LC_ALL, "");
+	ret = ft_printf("{%lld}\n", -9223372036854775808);
+	ex_ret = printf("{%lld}\n", -9223372036854775808);
+	if (!assert_ft_printf(ret, ex_ret))
+		return (-1);
 	ret = ft_printf("{%S}\n", L"Мы хотим больше сиськов");
 	ex_ret = printf("{%S}\n", L"Мы хотим больше сиськов");
 	if (!assert_ft_printf(ret, ex_ret))

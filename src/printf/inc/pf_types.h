@@ -6,7 +6,7 @@
 /*   By: emandret <emandret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 23:32:41 by emandret          #+#    #+#             */
-/*   Updated: 2017/04/19 23:37:20 by emandret         ###   ########.fr       */
+/*   Updated: 2017/04/23 13:03:33 by emandret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@
 
 # define CONVERSION_NUMBER 16
 # define BUFF_SIZE 1024
+
+# define LONG_MIN -9223372036854775807
+# define LONG_MAX 9223372036854775807
 
 typedef struct	s_flags
 {

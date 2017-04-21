@@ -6,7 +6,7 @@
 /*   By: emandret <emandret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 23:29:31 by emandret          #+#    #+#             */
-/*   Updated: 2017/04/20 01:16:12 by emandret         ###   ########.fr       */
+/*   Updated: 2017/04/21 18:40:20 by emandret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 void	pf_handle_wchr(t_buffer *buffer, t_format *format, va_list ap)
 {
-	wchar_t		c;
+	wchar_t	c;
 
-	if ((c = (wchar_t) va_arg(ap, wchar_t)))
+	format->min_field--;
+	if ((c = (wchar_t)va_arg(ap, wchar_t)))
 	{
-		format->min_field--;
 		if (!format->flags.space_right)
 			pf_buffer_putnchar(buffer, ' ', format->min_field);
 		pf_buffer_putwchar(buffer, c);
@@ -37,11 +37,9 @@ void	pf_handle_wchr(t_buffer *buffer, t_format *format, va_list ap)
 
 void	pf_handle_wstr(t_buffer *buffer, t_format *format, va_list ap)
 {
-	wchar_t		*s;
+	wchar_t	*s;
 
-	if (!(s = (wchar_t*)va_arg(ap, wchar_t*)))
-		pf_buffer_putstr(buffer, "(null)");
-	else
+	if ((s = (wchar_t*)va_arg(ap, wchar_t*)))
 	{
 		pf_compute_str(format, ft_wstrlen(s));
 		if (!format->flags.space_right)
@@ -50,4 +48,6 @@ void	pf_handle_wstr(t_buffer *buffer, t_format *format, va_list ap)
 		if (format->flags.space_right)
 			pf_buffer_putnchar(buffer, ' ', format->min_field);
 	}
+	else
+		pf_buffer_putstr(buffer, "(null)");
 }

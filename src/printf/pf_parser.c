@@ -6,7 +6,7 @@
 /*   By: emandret <emandret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 23:29:31 by emandret          #+#    #+#             */
-/*   Updated: 2017/04/19 23:41:26 by emandret         ###   ########.fr       */
+/*   Updated: 2017/04/23 13:13:54 by emandret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,7 @@ static void	convert_modi(t_format *format)
 		format->conversion = CC;
 	if (format->modifier == L && format->conversion == S)
 		format->conversion = SS;
+	if (format->conversion == DD || format->conversion == OO ||
+		format->conversion == UU)
+		format->modifier = LL;
 }

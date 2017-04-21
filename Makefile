@@ -6,7 +6,7 @@
 #    By: emandret <emandret@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/04/19 12:39:07 by emandret          #+#    #+#              #
-#    Updated: 2017/04/20 01:17:54 by emandret         ###   ########.fr        #
+#    Updated: 2017/04/21 18:58:53 by emandret         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ ft_tolower.c ft_toupper.c ft_ultoa_base.c ft_wcharlen.c ft_wstrlen.c
 
 PRINTF = ft_printf.c pf_buffer.c pf_handle.c pf_handle_chr.c pf_handle_hex.c \
 pf_handle_num.c pf_handle_oct.c pf_handle_ptr.c pf_handle_str.c \
-pf_handle_uni.c pf_helper.c pf_parse_conv.c pf_parse_flag.c \
+pf_handle_uni.c pf_handle_uns.c pf_helper.c pf_parse_conv.c pf_parse_flag.c \
 pf_parse_modi.c pf_parse_numb.c pf_parser.c pf_unicod.c
 
 OBJ = $(SRC:.c=.o) $(PRINTF:.c=.o)

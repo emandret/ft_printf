@@ -6,37 +6,24 @@
 /*   By: emandret <emandret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 23:29:31 by emandret          #+#    #+#             */
-/*   Updated: 2017/04/20 01:20:32 by emandret         ###   ########.fr       */
+/*   Updated: 2017/04/23 14:09:17 by emandret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/ft_printf.h"
 
-void	pf_handle_num(t_buffer *buffer, t_format *format, va_list ap)
+static void	no_arg_output(t_buffer *buffer, t_format *format);
+static void	putsign(t_format *format, t_buffer *buffer, t_bool is_neg);
+static char	*num_ltoa(intmax_t n);
+
+void		pf_handle_num(t_buffer *buffer, t_format *format, va_list ap)
 {
 	intmax_t	n;
 	char		*s;
 
-	if (!(n = pf_get_signed(format, ap)))
+	if ((n = pf_get_signed(format, ap)))
 	{
-		if (format->flags.enforce_sign || format->flags.space_left || format->flags.space_right)
-			format->min_field--;
-		pf_compute_num(format, 0);
-		if (format->flags.space_left)
-			pf_buffer_putchar(buffer, ' ');
-		if (!format->flags.zero_padding && !format->flags.space_right)
-			pf_buffer_putnchar(buffer, ' ', format->min_field);
-		if (format->flags.enforce_sign)
-			pf_buffer_putchar(buffer, '+');
-		pf_buffer_putnchar(buffer, '0', format->precision);
-		if (!format->has_precision && !format->flags.zero_padding)
-			pf_buffer_putchar(buffer, '0');
-		if (format->flags.space_right)
-			pf_buffer_putnchar(buffer, ' ', format->min_field);
-	}
-	else
-	{
-		s = ft_ltoa_base(ABS(n), 10);
+		s = num_ltoa(ABS(n));
 		if (format->flags.enforce_sign || n < 0)
 			format->min_field--;
 		pf_compute_num(format, ft_strlen(s));
@@ -46,46 +33,46 @@ void	pf_handle_num(t_buffer *buffer, t_format *format, va_list ap)
 			pf_buffer_putchar(buffer, ' ');
 		if (!format->flags.zero_padding && !format->flags.space_right)
 			pf_buffer_putnchar(buffer, ' ', format->min_field);
-		if (format->flags.enforce_sign && n >= 0)
-			pf_buffer_putchar(buffer, '+');
-		if (n < 0)
-			pf_buffer_putchar(buffer, '-');
+		putsign(format, buffer, n < 0);
 		pf_buffer_putnchar(buffer, '0', format->precision);
 		pf_buffer_putstr(buffer, s);
 		if (format->flags.space_right)
 			pf_buffer_putnchar(buffer, ' ', format->min_field);
-	}
-}
-
-void	pf_handle_uns(t_buffer *buffer, t_format *format, va_list ap)
-{
-	uintmax_t	n;
-	char		*s;
-
-	if (!(n = pf_get_unsigned(format, ap)))
-	{
-		if (format->flags.space_left || format->flags.space_right)
-			format->min_field--;
-		pf_compute_num(format, 0);
-		if (format->flags.space_left)
-			pf_buffer_putchar(buffer, ' ');
-		if (!format->flags.zero_padding && !format->flags.space_right)
-			pf_buffer_putnchar(buffer, ' ', format->min_field);
-		pf_buffer_putnchar(buffer, '0', format->precision);
-		if (!format->has_precision && !format->flags.zero_padding)
-			pf_buffer_putchar(buffer, '0');
-		if (format->flags.space_right)
-			pf_buffer_putnchar(buffer, ' ', format->min_field);
+		ft_memdel((void**)&s);
 	}
 	else
-	{
-		s = ft_ultoa_base(n, 10);
-		pf_compute_num(format, ft_strlen(s));
-		if (!format->flags.zero_padding && !format->flags.space_right)
-			pf_buffer_putnchar(buffer, ' ', format->min_field);
-		pf_buffer_putnchar(buffer, '0', format->precision);
-		pf_buffer_putstr(buffer, s);
-		if (format->flags.space_right)
-			pf_buffer_putnchar(buffer, ' ', format->min_field);
-	}
+		no_arg_output(buffer, format);
+}
+
+static void no_arg_output(t_buffer *buffer, t_format *format)
+{
+	if (format->flags.enforce_sign || format->flags.space_left || format->flags.space_right)
+		format->min_field--;
+	pf_compute_num(format, 0);
+	if (format->flags.space_left)
+		pf_buffer_putchar(buffer, ' ');
+	if (!format->flags.zero_padding && !format->flags.space_right)
+		pf_buffer_putnchar(buffer, ' ', format->min_field);
+	if (format->flags.enforce_sign)
+		pf_buffer_putchar(buffer, '+');
+	if (!format->has_precision && !format->flags.zero_padding)
+		format->precision++;
+	pf_buffer_putnchar(buffer, '0', format->precision);
+	if (format->flags.space_right)
+		pf_buffer_putnchar(buffer, ' ', format->min_field);
+}
+
+static void	putsign(t_format *format, t_buffer *buffer, t_bool is_neg)
+{
+	if (format->flags.enforce_sign && !is_neg)
+		pf_buffer_putchar(buffer, '+');
+	if (is_neg)
+		pf_buffer_putchar(buffer, '-');
+}
+
+static char	*num_ltoa(intmax_t n)
+{
+	if (n < LONG_MIN || n > LONG_MAX)
+		return (ft_strdup("9223372036854775808"));
+	return (ft_ltoa_base(n, 10));
 }
