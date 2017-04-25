@@ -6,13 +6,21 @@
 /*   By: emandret <emandret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 23:29:31 by emandret          #+#    #+#             */
-/*   Updated: 2017/04/21 19:42:16 by emandret         ###   ########.fr       */
+/*   Updated: 2017/04/25 20:06:06 by emandret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/ft_printf.h"
 
-static void	no_arg_output(t_buffer *buffer, t_format *format);
+static void	no_arg_output(t_buffer *buffer, t_format *format)
+{
+	if (!format->flags.zero_padding && !format->flags.space_right)
+		pf_buffer_putnchar(buffer, ' ', format->min_field);
+	if (!format->has_precision)
+		pf_buffer_putchar(buffer, '0');
+	if (format->flags.space_right)
+		pf_buffer_putnchar(buffer, ' ', format->min_field);
+}
 
 void		pf_handle_hex(t_buffer *buffer, t_format *format, va_list ap)
 {
@@ -41,14 +49,4 @@ void		pf_handle_hex(t_buffer *buffer, t_format *format, va_list ap)
 	}
 	else
 		no_arg_output(buffer, format);
-}
-
-static void	no_arg_output(t_buffer *buffer, t_format *format)
-{
-	if (!format->flags.zero_padding && !format->flags.space_right)
-		pf_buffer_putnchar(buffer, ' ', format->min_field);
-	if (!format->has_precision)
-		pf_buffer_putchar(buffer, '0');
-	if (format->flags.space_right)
-		pf_buffer_putnchar(buffer, ' ', format->min_field);
 }

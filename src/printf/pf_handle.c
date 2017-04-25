@@ -6,13 +6,21 @@
 /*   By: emandret <emandret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 23:29:31 by emandret          #+#    #+#             */
-/*   Updated: 2017/04/20 01:17:32 by emandret         ###   ########.fr       */
+/*   Updated: 2017/04/25 20:05:52 by emandret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/ft_printf.h"
 
-static void	handle_escape(t_buffer *buffer, t_format *format);
+static void	handle_escape(t_buffer *buffer, t_format *format)
+{
+	format->min_field--;
+	if (!format->flags.space_right)
+		pf_buffer_putnchar(buffer, ' ', format->min_field);
+	pf_buffer_putchar(buffer, '%');
+	if (format->flags.space_right)
+		pf_buffer_putnchar(buffer, ' ', format->min_field);
+}
 
 int			pf_dispatcher(t_buffer *buffer, t_format *format, va_list ap,
 	t_handler *handlers)
@@ -56,14 +64,4 @@ t_handler	*pf_init_handlers(void)
 	handlers[C] = &pf_handle_chr;
 	handlers[CC] = &pf_handle_wchr;
 	return (handlers);
-}
-
-static void	handle_escape(t_buffer *buffer, t_format *format)
-{
-	format->min_field--;
-	if (!format->flags.space_right)
-		pf_buffer_putnchar(buffer, ' ', format->min_field);
-	pf_buffer_putchar(buffer, '%');
-	if (format->flags.space_right)
-		pf_buffer_putnchar(buffer, ' ', format->min_field);
 }

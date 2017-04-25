@@ -6,31 +6,11 @@
 /*   By: emandret <emandret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 23:29:31 by emandret          #+#    #+#             */
-/*   Updated: 2017/04/19 23:38:05 by emandret         ###   ########.fr       */
+/*   Updated: 2017/04/25 20:07:41 by emandret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/ft_printf.h"
-
-static t_conversion	get_conv(char c);
-static t_conversion	get_lower_conv(char c);
-static t_conversion	get_upper_conv(char c);
-
-void				pf_parse_conv(const char **s, t_format *format)
-{
-	format->conversion = get_conv(**s);
-	if (format->conversion != C_NONE)
-		(*s)++;
-}
-
-static t_conversion	get_conv(char c)
-{
-	if (get_lower_conv(c) != C_NONE)
-		return (get_lower_conv(c));
-	if (get_upper_conv(c) != C_NONE)
-		return (get_upper_conv(c));
-	return (C_NONE);
-}
 
 static t_conversion	get_lower_conv(char c)
 {
@@ -70,4 +50,20 @@ static t_conversion	get_upper_conv(char c)
 	if (c == '%')
 		return (ESC);
 	return (C_NONE);
+}
+
+static t_conversion	get_conv(char c)
+{
+	if (get_lower_conv(c) != C_NONE)
+		return (get_lower_conv(c));
+	if (get_upper_conv(c) != C_NONE)
+		return (get_upper_conv(c));
+	return (C_NONE);
+}
+
+void				pf_parse_conv(const char **s, t_format *format)
+{
+	format->conversion = get_conv(**s);
+	if (format->conversion != C_NONE)
+		(*s)++;
 }

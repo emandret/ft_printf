@@ -6,13 +6,21 @@
 /*   By: emandret <emandret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 23:29:31 by emandret          #+#    #+#             */
-/*   Updated: 2017/04/19 23:41:05 by emandret         ###   ########.fr       */
+/*   Updated: 2017/04/25 20:08:22 by emandret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/ft_printf.h"
 
-static int	get_numb(const char **s);
+static int	get_numb(const char **s)
+{
+	int	n;
+
+	n = ft_atoi(*s);
+	while (ft_isdigit(**s))
+		(*s)++;
+	return (n);
+}
 
 void		pf_parse_numb(const char **s, t_format *format)
 {
@@ -27,14 +35,4 @@ void		pf_parse_numb(const char **s, t_format *format)
 		format->precision = get_numb(s);
 		format->has_precision = TRUE;
 	}
-}
-
-static int	get_numb(const char **s)
-{
-	int	n;
-
-	n = ft_atoi(*s);
-	while (ft_isdigit(**s))
-		(*s)++;
-	return (n);
 }
