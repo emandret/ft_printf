@@ -6,7 +6,7 @@
 /*   By: emandret <emandret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 23:29:31 by emandret          #+#    #+#             */
-/*   Updated: 2017/04/23 14:09:17 by emandret         ###   ########.fr       */
+/*   Updated: 2017/04/25 14:46:16 by emandret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ void		pf_handle_num(t_buffer *buffer, t_format *format, va_list ap)
 		if (format->flags.enforce_sign || n < 0)
 			format->min_field--;
 		pf_compute_num(format, ft_strlen(s));
-		if (!(format->flags.enforce_sign || n < 0) && (format->flags.zero_padding || format->flags.space_left))
+		if (!(format->flags.enforce_sign || n < 0) &&
+			(format->flags.zero_padding || format->flags.space_left))
 			format->min_field--;
 		if (format->flags.space_left && n >= 0)
 			pf_buffer_putchar(buffer, ' ');
@@ -44,9 +45,10 @@ void		pf_handle_num(t_buffer *buffer, t_format *format, va_list ap)
 		no_arg_output(buffer, format);
 }
 
-static void no_arg_output(t_buffer *buffer, t_format *format)
+static void	no_arg_output(t_buffer *buffer, t_format *format)
 {
-	if (format->flags.enforce_sign || format->flags.space_left || format->flags.space_right)
+	if (format->flags.enforce_sign || format->flags.space_left ||
+		format->flags.space_right)
 		format->min_field--;
 	pf_compute_num(format, 0);
 	if (format->flags.space_left)
