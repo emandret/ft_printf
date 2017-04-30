@@ -6,7 +6,7 @@
 /*   By: emandret <emandret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 23:29:31 by emandret          #+#    #+#             */
-/*   Updated: 2017/04/19 23:41:58 by emandret         ###   ########.fr       */
+/*   Updated: 2017/04/30 19:09:33 by emandret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,9 @@ void		pf_compute_str(t_format *format, int len)
 		format->precision = len;
 	if (format->precision < len)
 		format->min_field += len - format->precision;
-	if (format->min_field <= len)
-		format->min_field -= format->precision;
 	if (format->min_field < len)
+		format->min_field -= format->precision;
+	if (format->min_field <= len)
 		format->min_field = 0;
 	if (format->min_field > len)
 		format->min_field -= len;
