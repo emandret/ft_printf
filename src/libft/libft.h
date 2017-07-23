@@ -6,7 +6,7 @@
 /*   By: emandret <emandret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/21 23:37:31 by emandret          #+#    #+#             */
-/*   Updated: 2017/06/05 05:43:13 by emandret         ###   ########.fr       */
+/*   Updated: 2017/07/23 23:15:20 by emandret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,8 @@ int					ft_tolower(int c);
 int					ft_sqrt(int n);
 char				*ft_strjoin_free(const char *s1, const char *s2);
 char				*ft_itoa_base(int n, unsigned int base);
+char				*ft_getenv(char **env, char *key);
+char				*ft_getpath(char *path, char *file);
 
 /*
 ** Added for ft_printf (libft improved)
