@@ -6,7 +6,7 @@
 /*   By: emandret <emandret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/21 23:37:31 by emandret          #+#    #+#             */
-/*   Updated: 2017/07/23 23:15:20 by emandret         ###   ########.fr       */
+/*   Updated: 2017/07/24 21:30:59 by emandret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,7 @@ size_t				ft_wcharlen(wchar_t c);
 size_t				ft_wstrlen(const wchar_t *s);
 char				*ft_ltoa_base(intmax_t n, unsigned int base);
 char				*ft_ultoa_base(uintmax_t n, unsigned int base);
+int					ft_strfchr(const char *s, int c);
 
 /*
 ** Linked list definition
