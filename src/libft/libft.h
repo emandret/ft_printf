@@ -6,7 +6,7 @@
 /*   By: emandret <emandret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/21 23:37:31 by emandret          #+#    #+#             */
-/*   Updated: 2017/07/28 03:27:01 by emandret         ###   ########.fr       */
+/*   Updated: 2017/08/11 14:13:05 by emandret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,8 @@ char				*ft_itoa_base(int n, unsigned int base);
 char				*ft_getenv(char **env, char *key);
 char				*ft_getpath(char *path, char *file);
 char				**ft_tabdup(char **tab);
+char				*ft_strrep(char *src, char *in, char *to);
+int					ft_strcount(const char *s, const char *in);
 
 /*
 ** Added for ft_printf (libft improved)
