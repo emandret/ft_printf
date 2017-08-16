@@ -6,7 +6,7 @@
 /*   By: emandret <emandret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/21 23:37:31 by emandret          #+#    #+#             */
-/*   Updated: 2017/08/11 14:13:05 by emandret         ###   ########.fr       */
+/*   Updated: 2017/08/16 16:58:12 by emandret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,7 @@ char				*ft_getpath(char *path, char *file);
 char				**ft_tabdup(char **tab);
 char				*ft_strrep(char *src, char *in, char *to);
 int					ft_strcount(const char *s, const char *in);
+char				**ft_split_whitespaces(const char *s);
 
 /*
 ** Added for ft_printf (libft improved)
