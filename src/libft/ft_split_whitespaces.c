@@ -6,7 +6,7 @@
 /*   By: emandret <emandret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/16 16:56:40 by emandret          #+#    #+#             */
-/*   Updated: 2017/08/16 16:57:37 by emandret         ###   ########.fr       */
+/*   Updated: 2017/08/19 16:27:31 by emandret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int	count_words(const char *s)
 	unsigned int	words;
 
 	i = 0;
-	words = 0;
+	words = 1;
 	while (s[i])
 	{
 		skip(s, &i);
