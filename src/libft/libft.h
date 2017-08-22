@@ -6,7 +6,7 @@
 /*   By: emandret <emandret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/21 23:37:31 by emandret          #+#    #+#             */
-/*   Updated: 2017/08/22 08:41:50 by emandret         ###   ########.fr       */
+/*   Updated: 2017/08/22 16:56:10 by emandret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,7 @@ int					ft_strcount(const char *s, const char *in);
 char				**ft_split_whitespaces(const char *s);
 int					ft_tabsize(char **tab);
 void				ft_tabswap(char ***t1, char ***t2);
+void				ft_tabfree(void **tab);
 
 /*
 ** Added for ft_printf (libft improved)
