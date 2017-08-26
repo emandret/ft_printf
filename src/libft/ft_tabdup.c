@@ -6,7 +6,7 @@
 /*   By: emandret <emandret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/28 03:23:09 by emandret          #+#    #+#             */
-/*   Updated: 2017/07/28 03:23:46 by emandret         ###   ########.fr       */
+/*   Updated: 2017/08/26 19:44:12 by emandret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,9 @@ static int	size(char **tab)
 	unsigned int	i;
 
 	i = 0;
-	while (tab[i++]);
-	return (i);
+	while (tab[i++])
+		;
+	return (++i);
 }
 
 char		**ft_tabdup(char **tab)

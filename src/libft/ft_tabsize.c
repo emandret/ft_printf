@@ -6,7 +6,7 @@
 /*   By: emandret <emandret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/22 08:34:28 by emandret          #+#    #+#             */
-/*   Updated: 2017/08/22 08:35:24 by emandret         ###   ########.fr       */
+/*   Updated: 2017/08/26 19:44:09 by emandret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_tabsize(char **tab)
 	unsigned int	i;
 
 	i = 0;
-	while (tab[i])
-		i++;
+	while (tab[i++])
+		;
 	return (++i);
 }
