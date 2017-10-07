@@ -6,7 +6,7 @@
 /*   By: emandret <emandret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 23:32:41 by emandret          #+#    #+#             */
-/*   Updated: 2017/04/23 13:03:33 by emandret         ###   ########.fr       */
+/*   Updated: 2017/10/07 05:50:43 by emandret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@
 
 typedef struct	s_flags
 {
-	t_bool		convert;
-	t_bool		zero_padding;
-	t_bool		space_right;
-	t_bool		space_left;
-	t_bool		enforce_sign;
+	bool		convert;
+	bool		zero_padding;
+	bool		space_right;
+	bool		space_left;
+	bool		enforce_sign;
 }				t_flags;
 
 typedef enum	e_modifier
@@ -69,7 +69,7 @@ typedef struct	s_format
 {
 	t_flags		flags;
 	int			min_field;
-	t_bool		has_precision;
+	bool		has_precision;
 	int			precision;
 	t_modifier	modifier;
 	char		conversion;

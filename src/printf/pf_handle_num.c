@@ -6,7 +6,7 @@
 /*   By: emandret <emandret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 23:29:31 by emandret          #+#    #+#             */
-/*   Updated: 2017/05/31 16:06:30 by emandret         ###   ########.fr       */
+/*   Updated: 2017/10/07 05:50:41 by emandret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	no_arg_output(t_buffer *buffer, t_format *format)
 		pf_buffer_putnchar(buffer, ' ', format->min_field);
 }
 
-static void	putsign(t_format *format, t_buffer *buffer, t_bool is_neg)
+static void	putsign(t_format *format, t_buffer *buffer, bool is_neg)
 {
 	if (format->flags.enforce_sign && !is_neg)
 		pf_buffer_putchar(buffer, '+');

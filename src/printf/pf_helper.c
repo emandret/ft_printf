@@ -6,7 +6,7 @@
 /*   By: emandret <emandret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 23:29:31 by emandret          #+#    #+#             */
-/*   Updated: 2017/04/30 19:09:33 by emandret         ###   ########.fr       */
+/*   Updated: 2017/10/13 00:55:59 by emandret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ uintmax_t	pf_get_unsigned(t_format *format, va_list ap)
 void		pf_compute_num(t_format *format, int len)
 {
 	if (format->flags.zero_padding && format->precision > 0)
-		format->flags.zero_padding = FALSE;
+		format->flags.zero_padding = false;
 	if (format->min_field <= len)
 		format->min_field = 0;
 	if (format->precision <= len)

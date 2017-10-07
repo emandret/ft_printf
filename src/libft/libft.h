@@ -6,7 +6,7 @@
 /*   By: emandret <emandret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/21 23:37:31 by emandret          #+#    #+#             */
-/*   Updated: 2017/08/22 16:56:10 by emandret         ###   ########.fr       */
+/*   Updated: 2017/10/13 00:53:16 by emandret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,10 @@
 # include <string.h>
 # include <unistd.h>
 # include <stdlib.h>
+# include <stdbool.h>
 
 # define ABS(x) (x > 0 ? x : -x)
 # define END(s) (s + ft_strlen(s))
-
-/*
-** Boolean implementation
-*/
-typedef enum		e_bool
-{
-	FALSE,
-	TRUE
-}					t_bool;
 
 /*
 ** Memory functions

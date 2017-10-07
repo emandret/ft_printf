@@ -6,7 +6,7 @@
 /*   By: emandret <emandret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 23:29:31 by emandret          #+#    #+#             */
-/*   Updated: 2017/05/31 16:04:34 by emandret         ###   ########.fr       */
+/*   Updated: 2017/10/13 00:55:56 by emandret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,13 @@ void		pf_parse_numb(const char **s, t_format *format, va_list ap)
 {
 	format->min_field = 0;
 	format->precision = 0;
-	format->has_precision = FALSE;
+	format->has_precision = false;
 	if (ft_isdigit(**s) || **s == '*')
 		format->min_field = has_asterisk(s, ap);
 	if (**s == '.')
 	{
 		(*s)++;
 		format->precision = has_asterisk(s, ap);
-		format->has_precision = TRUE;
+		format->has_precision = true;
 	}
 }
